@@ -19,3 +19,4 @@ python-dotenv
 # Testing & Linting
 pytest
 flake8
+pytest-asyncio
