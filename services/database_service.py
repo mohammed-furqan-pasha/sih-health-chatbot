@@ -75,3 +75,26 @@ class DatabaseService:
             logger.info(f"Saved message from '{message.sender}' to chat history.")
         except Exception as e:
             logger.error(f"Database error while saving chat message: {e}")
+            
+    async def get_chat_history(self, phone_number: str, limit: int = 5) -> List[Dict[str, Any]]:
+        """
+        Retrieves the most recent chat history for a given user.
+        """
+        if not self.supabase:
+            logger.error("Supabase client not available.")
+            return []
+
+        try:
+            response = (
+                await self.supabase.table('chat_history')
+                .select('*')
+                .eq('phone_number', phone_number)
+                .order('created_at', desc=True)
+                .limit(limit)
+                .execute()
+            )
+            # The records are fetched in descending order, so we reverse them to get chronological order
+            return list(reversed(response.data))
+        except Exception as e:
+            logger.error(f"Database error while getting chat history for {phone_number}: {e}")
+            return []
