@@ -50,7 +50,7 @@ class DatabaseService:
     async def create_or_update_user(self, user_data: User) -> None:
         """
         Creates a new user or updates an existing one based on the phone number.
-        This is also known as an 'upsert' operation.
+        This is also known as an 'upsert' operation.yoo
         """
         if not self.supabase:
             logger.error("Supabase client not available.")
