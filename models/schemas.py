@@ -3,13 +3,15 @@ from typing import Optional
 
 class User(BaseModel):
     """
-    Represents a user's profile in the database.
-    Ensures data consistency for user-related operations.
+    Represents a detailed user profile with specific health conditions.
+    This structured data allows for more accurate, personalized AI responses.
     """
     phone_number: str
-    language: str = 'English'  # Default language
+    language: str = 'English'
     age: Optional[int] = None
-    conditions: Optional[str] = None # e.g., "diabetes,hypertension"
+    has_diabetes: Optional[bool] = False
+    has_hypertension: Optional[bool] = False
+    other_conditions: Optional[str] = None
 
 class ChatMessage(BaseModel):
     """
