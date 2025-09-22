@@ -3,7 +3,7 @@ import json
 import logging
 from typing import Dict, Optional, List, Any
 
-from ..core.config import settings
+from core.config import settings
 
 # Configure logging for better debugging
 logging.basicConfig(level=logging.INFO)
