@@ -1,0 +1,21 @@
+# Framework
+fastapi
+uvicorn[standard]
+
+# Database
+supabase
+
+# AI and Data
+google-generativeai
+gspread
+oauth2client
+
+# Messaging
+twilio
+
+# Utilities & Environment
+python-dotenv
+
+# Testing & Linting
+pytest
+flake8
