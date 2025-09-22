@@ -1,7 +1,7 @@
 import logging
 from typing import Any, Dict, Optional
 
-from supabase import create_client, Client
+from supabase import create_client, AsyncClient
 
 from core.config import settings
 from models.schemas import User, ChatMessage
@@ -15,16 +15,14 @@ class DatabaseService:
     Manages all asynchronous interactions with the Supabase database.
     """
     def __init__(self):
-        """
-        Initializes the asynchronous Supabase client using credentials from settings.
-        """
         try:
-            self.supabase: AsyncClient = create_client(
+            # FIX: Create an AsyncClient directly for all async operations
+            self.supabase: AsyncClient = AsyncClient(
                 settings.SUPABASE_URL, settings.SUPABASE_KEY
             )
-            logger.info("Successfully initialized Supabase client.")
+            logger.info("Successfully initialized Supabase AsyncClient.")
         except Exception as e:
-            logger.error(f"Failed to initialize Supabase client: {e}")
+            logger.error(f"Failed to initialize Supabase AsyncClient: {e}")
             self.supabase = None
 
     async def get_user(self, phone_number: str) -> Optional[Dict[str, Any]]:
