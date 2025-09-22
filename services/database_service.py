@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, List
 
 from supabase import create_client, AsyncClient
 
