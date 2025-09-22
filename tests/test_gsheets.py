@@ -8,7 +8,7 @@ from services.gsheets_service import GSheetsService
 # Load environment variables from .env file for testing
 load_dotenv()
 
-# Condition to skip the test if Google credentials are not in the environment
+# Condition to skip the test if Google credentials are not in the environment .
 skip_if_no_creds = pytest.mark.skipif(
     not os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"),
     reason="Google application credentials are not set."
