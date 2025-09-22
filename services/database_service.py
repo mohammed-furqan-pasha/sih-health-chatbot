@@ -1,10 +1,10 @@
 import logging
 from typing import Any, Dict, Optional
 
-from supabase_async import create_client, AsyncClient
+from supabase import create_client, Client
 
-from ..core.config import settings
-from ..models.schemas import User, ChatMessage
+from core.config import settings
+from models.schemas import User, ChatMessage
 
 # Configure logging for better debugging
 logging.basicConfig(level=logging.INFO)

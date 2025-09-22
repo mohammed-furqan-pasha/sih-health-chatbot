@@ -1,7 +1,7 @@
 import os
 import pytest
 from dotenv import load_dotenv
-from app.services.database_service import DatabaseService
+from services.database_service import DatabaseService
 
 # Load environment variables from .env file for testing
 load_dotenv()

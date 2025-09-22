@@ -1,0 +1,6 @@
+[project]
+name = "sih-health-chatbot"
+version = "0.1.0"
+
+[tool.setuptools.packages.find]
+include = ["services*", "models*", "core*"]
