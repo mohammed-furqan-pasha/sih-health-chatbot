@@ -16,7 +16,7 @@ class GSheetsService:
     """
     def __init__(self, sheet_name: str = "HealthDB"):
         """
-        Initializes the service by authenticating with Google Sheets and
+        Initializes the service by authenticating with Google Sheets and .
         loading the entire first worksheet into an in-memory list.
         """
         self.records: List[Dict[str, Any]] = []
