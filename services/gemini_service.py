@@ -2,8 +2,8 @@ import logging
 import google.generativeai as genai
 from typing import List, Dict, Any
 
-from ..core.config import settings
-from ..models.schemas import User
+from core.config import settings
+from models.schemas import User
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
