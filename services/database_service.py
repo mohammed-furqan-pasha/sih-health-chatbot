@@ -64,7 +64,7 @@ class DatabaseService:
 
     async def save_chat_message(self, message: ChatMessage) -> None:
         """
-        Saves a single chat message to the 'chat_history' table.
+        Saves a single chat message to the 'chat_history' table.hi
         """
         if not self.supabase:
             logger.error("Supabase client not available.")
