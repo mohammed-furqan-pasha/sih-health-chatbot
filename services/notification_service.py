@@ -27,30 +27,26 @@ class NotificationService:
             self.sender_number = None
 
     async def send_sms(self, to_number: str, message_body: str):
-        """
-        Sends an SMS message asynchronously.
-
-        This function runs the synchronous Twilio library call in a separate
-        thread to avoid blocking the main application event loop.
-        """
+   
         if not self.client:
-            logger.error("Cannot send SMS: Twilio client is not available.")
+            logger.error("Twilio client not initialized.")
             return
 
         try:
-            # The Twilio library is synchronous (blocking).
-            # asyncio.to_thread runs this blocking code in a separate thread,
-            # allowing our async FastAPI app to remain responsive.
-            message = await asyncio.to_thread(
+            from_number = self.sender_number # Default to your SMS number
+
+            # Check if the destination is a WhatsApp number
+            if to_number.startswith('whatsapp:'):
+                # If so, the sender must also be the WhatsApp sandbox number
+                from_number = f"whatsapp:{settings.TWILIO_WHATSAPP_NUMBER}"
+
+            # Run the synchronous Twilio call in a separate thread
+            await asyncio.to_thread(
                 self.client.messages.create,
+                from_=from_number,
                 to=to_number,
-                from_=self.sender_number,
                 body=message_body
             )
-            logger.info(f"SMS sent successfully to {to_number}. SID: {message.sid}")
-        except TwilioRestException as e:
-            # Handle specific Twilio API errors (e.g., invalid phone number)
-            logger.error(f"Failed to send SMS to {to_number}. Twilio error: {e}")
+            logger.info(f"Successfully sent message to {to_number}")
         except Exception as e:
-            # Handle other unexpected errors
-            logger.error(f"An unexpected error occurred while sending SMS: {e}")
+            logger.error(f"Failed to send message to {to_number}. Twilio error: {e}")

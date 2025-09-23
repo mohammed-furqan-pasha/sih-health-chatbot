@@ -22,7 +22,8 @@ class GeminiService:
         """
         try:
             genai.configure(api_key=settings.GEMINI_API_KEY)
-            self.model = genai.GenerativeModel('gemini-pro')
+            # CORRECT
+            self.model = genai.GenerativeModel('gemini-1.5-flash-latest')
             logger.info("Gemini Pro model initialized successfully.")
         except Exception as e:
             logger.error(f"Failed to configure Gemini client: {e}")

@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     TWILIO_ACCOUNT_SID: str
     TWILIO_AUTH_TOKEN: str
     TWILIO_PHONE_NUMBER: str
+    TWILIO_WHATSAPP_NUMBER: str
 
     # Google Cloud Service Account (for Google Sheets)
     # This should be the JSON content as a string
