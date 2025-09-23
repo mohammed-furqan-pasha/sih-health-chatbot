@@ -44,4 +44,5 @@ jobs:
 
       - name: Run Pytest
         run: |
-          pytest tests/ --disable-warnings -q
+          PYTHONPATH=. pytest tests/ --disable-warnings -q
+
