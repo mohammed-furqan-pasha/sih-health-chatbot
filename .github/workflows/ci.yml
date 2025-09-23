@@ -34,13 +34,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install black isort flake8 pytest
+
+      - name: Auto-format with Black & isort
+        run: |
+          black . --line-length 120
+          isort .
 
       - name: Run Flake8 Linting
         run: |
-          pip install flake8
           flake8 . --count --max-complexity=10 --max-line-length=120 --statistics
 
       - name: Run Pytest
         run: |
-          pip install pytest
           pytest tests/ --disable-warnings -q
