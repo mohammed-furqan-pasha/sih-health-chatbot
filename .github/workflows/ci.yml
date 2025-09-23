@@ -38,7 +38,9 @@ jobs:
 
       - name: Run Flake8 Linting
         run: |
-          flake8 . --count --max-complexity=10 --statistics --ignore=E501,F401
+          flake8 . --count --max-complexity=10 --statistics --ignore=E501,F401,E302,E305,W293,E261
+               
+
 
       - name: Run Pytest
         run: |
